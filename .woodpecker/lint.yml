@@ -1,0 +1,5 @@
+steps:
+  lint:
+    image: golangci/golangci-lint
+    commands:
+      - golangci-lint run
