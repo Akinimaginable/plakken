@@ -43,7 +43,7 @@ func getContent(key string) string {
 	return db.HGet(ctx, key, "content").Val()
 }
 
-func deleteContent(key string) {
+func DeleteContent(key string) {
 	err := db.Del(ctx, key)
 	if err != nil {
 		log.Println(err)
