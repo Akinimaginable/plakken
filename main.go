@@ -62,8 +62,10 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 			url := "/" + GenerateUrl()
 			content := r.FormValue("content")
 			rawExpiration := r.FormValue("exp")
-			expiration := parseExpiration(rawExpiration)
-			if expiration == 0 {
+			expiration, err := ParseExpiration(rawExpiration)
+			if err != nil {
+				log.Println(err)
+			} else if expiration == 0 {
 				insertPaste(url, content, secret, -1)
 			} else if expiration == -1 {
 				w.WriteHeader(http.StatusBadRequest)
