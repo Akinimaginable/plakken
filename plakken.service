@@ -1,3 +1,4 @@
+# /usr/lib/systemd/system/plakken.service
 [Unit]
 Description=A paste server
 After=network.target
@@ -8,6 +9,7 @@ User=plakken
 
 ExecStart=/usr/bin/plakken
 
+
 EnvironmentFile=/etc/plakken/env
 
 NoNewPrivileges=yes
@@ -16,6 +18,7 @@ ProtectHome=true
 RestrictNamespaces=true
 PrivateTmp=true
 PrivateDevices=true
+PrivateUsers=true
 ProtectClock=true
 ProtectControlGroups=true
 ProtectKernelTunables=true
@@ -25,9 +28,27 @@ LockPersonality=true
 RestrictSUIDSGID=true
 RemoveIPC=true
 RestrictRealtime=true
-SystemCallFilter=@system-service
 SystemCallArchitectures=native
 MemoryDenyWriteExecute=true
+UMask=177 
+ProtectProc=invisible
+CapabilityBoundingSet=
+ProtectHostname=true
+RestrictAddressFamilies=~AF_(INET|INET6)
+RestrictAddressFamilies=~…
+RestrictAddressFamilies=~AF_UNIX
+RestrictAddressFamilies=~AF_NETLINK
+RestrictAddressFamilies=~AF_PACKET
+SystemCallFilter=~@reboot
+SystemCallFilter=~@obsolete
+SystemCallFilter=~@mount
+SystemCallFilter=~@module
+SystemCallFilter=~@debug
+SystemCallFilter=~@cpu-emulation
+SystemCallFilter=~@clock
+SystemCallFilter=~@swap
+SystemCallFilter=~@privileged
+ProcSubset=pid
 
 [Install]
 WantedBy=multi-user.target
