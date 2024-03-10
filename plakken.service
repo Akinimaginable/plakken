@@ -12,9 +12,9 @@ ExecStart=/usr/bin/plakken
 
 EnvironmentFile=/etc/plakken/env
 
-NoNewPrivileges=yes
 ProtectSystem=strict
 ProtectHome=true
+NoNewPrivileges=yes
 RestrictNamespaces=true
 PrivateTmp=true
 PrivateDevices=true

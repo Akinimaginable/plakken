@@ -48,11 +48,10 @@ nfpms:
     file_name_template: "{{ .ConventionalFileName }}"
     vendor: GnousEU
     homepage: https://git.gnous.eu/plakken/
-    maintainer: Ada <ada@gnous.eu>
+    maintainer: GnousEU <contact@gnous.eu>
     description: A light paste server
     license: AGPLv3
     formats:
-      - apk
       - deb
       - rpm
       - archlinux
