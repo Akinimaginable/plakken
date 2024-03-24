@@ -19,13 +19,13 @@ func GenerateUrl(length uint8) string {
 	return string(b)
 }
 
-// CheckCharRedundant  verify is a character is redundant in a string
-func CheckCharRedundant(source string, char string) bool { // Verify if a char is redundant
+// checkCharRedundant  verify is a character is redundant in a string
+func checkCharRedundant(source string, char string) bool { // Verify if a char is redundant
 	return strings.Count(source, char) > 1
 }
 
 func parseIntBeforeSeparator(source *string, sep string) (int, error) { // return 0 & error if error, only accept positive number
-	if CheckCharRedundant(*source, sep) {
+	if checkCharRedundant(*source, sep) {
 		return 0, &parseIntBeforeSeparatorError{message: *source + ": cannot parse value as int"}
 	}
 	var value int
